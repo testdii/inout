@@ -110,12 +110,14 @@
     var title2 = document.getElementById("title2");
     var center = document.getElementById("center")
     var myname = document.getElementById("myname");
-    var image = document.getElementById("image");
+    var myimage = document.getElementById("image");
     var times = document.getElementById("times");
 
 
 
     function to(type) {
+        myname.textContent = document.getElementById("name").value
+
         if (type == 'in') {
             title.textContent = "进校"
             title2.textContent = "进校"
@@ -134,9 +136,6 @@
 
         times.textContent = Math.trunc(Math.random() * 9)
 
-        myname.textContent = window.sessionStorage.getItem('name');
-        image.src = window.sessionStorage.getItem('image');
-
         var time = document.querySelector("#time");
         setInterval((time) => {
             var myDate = new Date();
@@ -149,7 +148,7 @@
     }
 
     function sb() {
-        window.sessionStorage.setItem('name', document.getElementById("name").value);
+        myname.textContent = document.getElementById("name").value
         alert("保存成功")
     }
 
@@ -165,7 +164,7 @@
                     FR.addEventListener("load", function (e) {
                         var buffer = e.target.result;
                         document.getElementById("avatar-preview").src = buffer;
-                        window.sessionStorage.setItem('image', buffer);
+                        myimage.src = buffer;
                     });
                     FR.readAsDataURL(file);
                 }
